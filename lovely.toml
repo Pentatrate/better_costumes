@@ -15,7 +15,7 @@ if mods.utilitools == nil then
 	love.quit()
 	error("Better Costumes: Failed to quit game.")
 end
-utilitools.files["better-costumes"].startup()
+utilitools.files.better_costumes.startup()
 '''
 position = "after"
 target = "main.lua"
@@ -27,7 +27,7 @@ times = 1
 match_indent = true
 pattern = '''end, 17*3, nil, sprites.menu.costumes)'''
 payload = '''
-if mods["better-costumes"].config.betterCostumes then
+if mods.better_costumes.config.betterCostumes then
 	self.mainMenu:addOption("Better Costumes",function()
 		cs = bs.load("BetterCostumes")
 		self:leave()
@@ -47,8 +47,8 @@ times = 1
 match_indent = true
 pattern = '''self.randomCostume = unlockedCostumeList[math.random(#unlockedCostumeList)]'''
 payload = '''
-if mods["better-costumes"].config.selectiveRandomness then
-	local array = utilitools.table.keysToValues(mods["better-costumes"].config.selectedRandomness)
+if mods.better_costumes.config.selectiveRandomness then
+	local array = utilitools.table.keysToValues(mods.better_costumes.config.selectedRandomness)
 	self.randomCostume = array[math.random(#array)] or "none"
 else
 	self.randomCostume = unlockedCostumeList[math.random(#unlockedCostumeList)]
